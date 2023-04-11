@@ -1,5 +1,6 @@
 <?php
 include 'product.php';
+// Creating objects for product class and passing the super global variable $_POST, $_FILES as parameter to the method addProduct()
 $product = new Product();
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
   $add_product = $product->addProduct($_POST, $_FILES);
@@ -117,14 +118,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
               <?php
                 $show_products = $product->show_products();
                 if ($show_products){
+                  // while looop for fetching data from database
                   while($row = mysqli_fetch_assoc($show_products)){
                     ?>
+                    <!-- This is product showing section inside a while loop -->
                       <div class="col-md-3">
                   <div class="card mb-4">
                       <img src="<?php echo $row['product_image'];?>" width="309px" height="309px" class="card-img-top" alt="...">
                     <div class="card-body">
                       <h5 class="card-title d-inline"><?php $row['product_name'];?></h5>
-                      <h5 class="float-right"><?php echo $row['product_price'];?></h5>
+                      <h5 class="float-right">$<?php echo $row['product_price'];?>+ tax <?php echo $row['tax'];?>%</h5>
                       <p class="card-text"><?php echo $row['product_details'];?></p>
                       <form action="selected_product.php?id=<?php echo $row['id'];?>" method="post">
                         <input type="number" class="mb-2" min="1" step="1" name="quantity" placeholder="quantity" required>
