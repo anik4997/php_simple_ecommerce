@@ -48,6 +48,8 @@ class product{
 
 
             $insert_query_connection = $this->db->insert($insert_query);
+            header("location: index.php");
+            exit;
 
             if($insert_query_connection){
                 $insert_success_msg = "Product uploaded successfully!";
@@ -64,7 +66,5 @@ class product{
         $select_query_connection = $this->db->select($show_query);
         return $select_query_connection;
     }
-
 }
-
 ?>
