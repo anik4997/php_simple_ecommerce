@@ -2,12 +2,13 @@
 include 'product.php';
 // Creating objects for product class and passing the super global variable $_POST, $_FILES as parameter to the method addProduct()
 $product = new Product();
-if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+// Passing superglobal variable POST and REQUEST to addProduct method(product.php) for getting the specific values
+if (isset($_POST['submit'])){
   $add_product = $product->addProduct($_POST, $_FILES);
 }
 
 ?>
-
+<!-- html with bootsrtap cdn -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -131,7 +132,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                       <p class="card-text"><?php echo $row['product_details'];?></p>
                       <form action="selected_product.php?id=<?php echo $row['id'];?>" method="post">
                         <input type="number" class="mb-2" min="1" step="1" name="quantity" placeholder="quantity" required>
-                       <a href="selected_product.php?id=<?php echo $row['id'];?>" type="submit" name="select_items" class="btn btn-primary">Select Item</button></a>
+                        <a href="selected_product.php?id=<?php echo $row['id'];?>"><button type="submit" name="select_items" class="btn btn-primary">Select Item</button></a>
                    </div>
                   </div>
                 </div>
@@ -142,11 +143,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
               ?>          
               
                 <!-- Php tag for closing while loop bracket and closing if else condition for counting database row -->
-            </div>
-
-
-
-              
+            </div>             
 </div>
 <!-- products showing section end -->
 
