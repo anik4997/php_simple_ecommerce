@@ -1,5 +1,5 @@
 <?php
-// constant for database information
+// constants for database information
 define('HOST', 'localhost');
 define('USERNAME', 'root');
 define('PASSWORD', '');
