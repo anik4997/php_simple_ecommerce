@@ -1,5 +1,5 @@
 <?php
-include 'product.php';
+require 'vendor/autoload.php';
 // Creating objects for product class and passing the super global variable $_POST, $_FILES as parameter to the method addProduct()
 $product = new Product();
 // Passing superglobal variable POST and REQUEST to addProduct method(product.php) for getting the specific values
