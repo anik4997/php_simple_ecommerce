@@ -1,5 +1,5 @@
 <?php
-include 'database.php';
+require 'vendor/autoload.php';
 class product{
     public $db;
     // This constractor is for creating an object for the class database where have all the connections(db connection, insert, show query connections)
