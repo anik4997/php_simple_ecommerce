@@ -1,5 +1,5 @@
 <?php
-include "config.php";
+require 'vendor/autoload.php';
 // class for database connection
 class database{
     public $db_host = HOST;
@@ -58,7 +58,7 @@ class database{
         }
     }
 
-    
+
     // Cart show
     public function show_cart($show_cart_query){
         $show_cart_query_connection = mysqli_query($this->db_connection,$show_cart_query) or die($this->db_connection->error.__LINE__);
@@ -68,6 +68,19 @@ class database{
             return false;
         }
     }
+
+    // Send notification mail to the vendor
+    public function send_mail_connection($mail_query){
+        $mail_query_connection = mysqli_query($this->db_connection,$mail_query) or die($this->db_connection->error.__LINE__);
+        
+    }
+
+    // Empty cart
+    public function empty_cart($empty_cart_query){
+        $empty_cart_query_connection = mysqli_query($this->db_connection,$empty_cart_query) or die($this->db_connection->error.__LINE__);
+        
+    }
+
 }
 
 ?>
