@@ -1,0 +1,5 @@
+{
+    "autoload": {
+        "files": ["config.php","database.php","product.php"]
+    }
+}
