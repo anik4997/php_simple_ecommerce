@@ -12,7 +12,7 @@ class mail{
    }
    public function empty_cart(){
     $empty_cart_query = "DELETE FROM selected_items";
-    $empty_cart_query_connection = $this->db->empty_cart($empty_cart_query);
+    $empty_cart_query_connection = $this->db->empty_cart_conncection($empty_cart_query);
    }
 }
 if(isset($_POST['order_btn'])){
