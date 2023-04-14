@@ -1,8 +1,14 @@
 <?php
 require 'vendor/autoload.php';
+// creating an object for cart class
+$cart = new cart();
+// Passing superglobal variable POST and REQUEST to selectproduct method(selected_product.php) for getting the specific values of id and quantity
+if (isset($_POST['select_items'])){
+  $select_product = $cart->selectproduct($_POST, $_REQUEST);
+}
 class cart{
   public $db;
-    // This constractor is for creating an object for the class database where have all the connections(db connection, insert, show query connections)
+  // This constractor is for creating an object for the class database where have all the connections(db connection, insert, show query connections)
     public function __construct(){
 
         $this->db = new database();
@@ -30,12 +36,7 @@ class cart{
  }
 
 }
-// creating an object for cart class
-$cart = new cart();
-// Passing superglobal variable POST and REQUEST to selectproduct method(selected_product.php) for getting the specific values of id and quantity
-if (isset($_POST['select_items'])){
-  $select_product = $cart->selectproduct($_POST, $_REQUEST);
-}
+
 ?>
 <!-- html with bootsrtap cdn -->
 <!DOCTYPE html>
