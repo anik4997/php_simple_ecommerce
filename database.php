@@ -76,7 +76,7 @@ class database{
     }
 
     // Empty cart
-    public function empty_cart($empty_cart_query){
+    public function empty_cart_conncection($empty_cart_query){
         $empty_cart_query_connection = mysqli_query($this->db_connection,$empty_cart_query) or die($this->db_connection->error.__LINE__);
         
     }
