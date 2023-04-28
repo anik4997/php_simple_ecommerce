@@ -1,11 +1,12 @@
 <?php
 require 'vendor/autoload.php';
+
 class product{
-    public $db;
+    public $obj;
     // This constractor is for creating an object for the class database where have all the connections(db connection, insert, show query connections)
     public function __construct(){
 
-        $this->db = new database();
+       $this->obj = database::getInstance();
     }
     public function addProduct($data, $img){
         // Taking values of input field by post and files(super global variable)
@@ -47,7 +48,7 @@ class product{
             $insert_query = "INSERT INTO oop_crud (product_name, product_details, product_price, vendor_email, product_image, tax) VALUES ('$product_name', '$product_details', '$product_price', '$vendor_email', '$upload_img', '$product_tax')";
 
 
-            $insert_query_connection = $this->db->insert($insert_query);
+            $insert_query_connection = $this->obj->insert($insert_query);
             header("location: index.php");
             exit;
 
@@ -63,7 +64,7 @@ class product{
     //  This method is for select query for showing products
     public function show_products(){
         $show_query = "SELECT * FROM oop_crud";
-        $select_query_connection = $this->db->select($show_query);
+        $select_query_connection = $this->obj->select($show_query);
         return $select_query_connection;
     }
 }
