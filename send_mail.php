@@ -1,18 +1,20 @@
 <?php
 require 'vendor/autoload.php';
 class mail{
-   public $db;
-   public function __construct(){
-        $this->db = new database();
-   }
+    public $obj;
+    // This constractor is for creating an object for the class database where have all the connections(db connection, insert, show query connections)
+    public function __construct(){
+
+       $this->obj = database::getInstance();
+    }
    public function send_mail(){
     $mail_query = "SELECT * FROM selected_products";
-    $mail_query_connection = $this->db->send_mail_connection($mail_query);
+    $mail_query_connection = $this->obj->send_mail_connection($mail_query);
     return $mail_query_connection;
    }
    public function empty_cart(){
-    $empty_cart_query = "DELETE FROM selected_products";
-    $empty_cart_query_connection = $this->db->empty_cart_conncection($empty_cart_query);
+    $empty_cart_query = "DELETE * FROM selected_products";
+    $empty_cart_query_connection = $this->obj->empty_cart_connection($empty_cart_query);
    }
 }
 if(isset($_POST['order_btn'])){
@@ -28,7 +30,7 @@ if(isset($_POST['order_btn'])){
             if(mail($db_mail,$subject,$body,$header)){
                 echo "<h3>A notification email send successfully to <b>$db_mail</b> about your order....<br></h3> ";
                 // Cart will be empty after placing the order
-               $empty_cart = $mail->empty_cart();
+                $empty_cart = $mail->empty_cart();
                
             }else{
                 echo "Email sending failed!";
@@ -37,5 +39,4 @@ if(isset($_POST['order_btn'])){
         }
     }
 }
-
 ?>
