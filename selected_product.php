@@ -7,11 +7,11 @@ if (isset($_POST['select_items'])){
   $select_product = $cart->selectproduct($_POST, $_REQUEST);
 }
 class cart{
-  public $db;
-  // This constractor is for creating an object for the class database where have all the connections(db connection, insert, show query connections)
+  public $obj;
+    // This constractor is for creating an object for the class database where have all the connections(db connection, insert, show query connections)
     public function __construct(){
 
-        $this->db = new database();
+       $this->obj = database::getInstance();
     }
   //  This method is for selecting products and copy to the new cart table(selected_products in mysql) from oop_crud table
   public function selectproduct($quantity_input, $id_input){
@@ -25,13 +25,13 @@ class cart{
          SELECT id, product_name, product_price, vendor_email, product_image, tax, '$quantity'
          FROM oop_crud
          WHERE id = $rcv_id";
-         $cart_insert_connection = $this->db->insert_cart_table($cart_insert);
+         $cart_insert_connection = $this->obj->insert_cart_table($cart_insert);
      }
  }
 //  This method is for showing selected products from selected_products mysql table to UI
  public function show_selectedproducts(){
         $show_cart_query = "SELECT * FROM selected_products";
-        $show_cart_query_connection = $this->db->show_cart($show_cart_query);
+        $show_cart_query_connection = $this->obj->show_cart($show_cart_query);
         return $show_cart_query_connection;
  }
 
@@ -76,6 +76,7 @@ class cart{
             $tax_amount = $row2['tax']*$row2['product_price']/100;
             $unit_price = $row2['product_price']+$tax_amount;
             $total_price = $unit_price*$row2['product_quantity'];
+
             ?>
             <!-- This html table body inside a while loop for showing selected items -->
         <tbody>
