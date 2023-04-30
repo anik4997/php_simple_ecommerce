@@ -42,8 +42,8 @@ class Database {
     }
 
     // Show products in available products section
-    public function select($select_query) {
-        $select_query_connection = mysqli_query($this->db_conn, $select_query) or die($this->db_conn->error.__LINE__);
+    public function select($show_query) {
+        $select_query_connection = mysqli_query($this->db_conn, $show_query) or die($this->db_conn->error.__LINE__);
         if(mysqli_num_rows($select_query_connection)>0) {
             return $select_query_connection;
         } else {
