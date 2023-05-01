@@ -1,7 +1,8 @@
 <?php
+namespace view;
 require 'vendor/autoload.php';
 // Creating objects for product class and passing the super global variable $_POST, $_FILES as parameter to the method addProduct()
-$product = new Product();
+$product = new \model\Product();
 // Passing superglobal variable POST and REQUEST to addProduct method(product.php) for getting the specific values
 if (isset($_POST['submit'])){
   $add_product = $product->addProduct($_POST, $_FILES);
