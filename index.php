@@ -6,7 +6,6 @@ $product = new Product();
 if (isset($_POST['submit'])){
   $add_product = $product->addProduct($_POST, $_FILES);
 }
-
 ?>
 <!-- html with bootsrtap cdn -->
 <!DOCTYPE html>
@@ -19,7 +18,7 @@ if (isset($_POST['submit'])){
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/fontawesome.min.css">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Coderex Assessment</title>
 </head>
 <body>
 <!-- navbar start -->
