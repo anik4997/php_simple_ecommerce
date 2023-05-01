@@ -1,7 +1,8 @@
 <?php
+namespace view;
 require 'vendor/autoload.php';
 // creating an object for product class
-$product = new Product();
+$product = new \model\Product();
 
 if (isset($_POST['select_items'])){
   $select_product = $product->selectproduct($_POST, $_REQUEST);
