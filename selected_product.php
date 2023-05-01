@@ -1,43 +1,13 @@
 <?php
 require 'vendor/autoload.php';
-// creating an object for cart class
-$cart = new cart();
-// Passing superglobal variable POST and REQUEST to selectproduct method(selected_product.php) for getting the specific values of id and quantity
+// creating an object for product class
+$product = new Product();
+
 if (isset($_POST['select_items'])){
-  $select_product = $cart->selectproduct($_POST, $_REQUEST);
+  $select_product = $product->selectproduct($_POST, $_REQUEST);
 }
-class cart{
-  public $obj;
-    // This constractor is for creating an object for the class database where have all the connections(db connection, insert, show query connections)
-    public function __construct(){
-
-       $this->obj = database::getInstance();
-    }
-  //  This method is for selecting products and copy to the new cart table(selected_products in mysql) from oop_crud table
-  public function selectproduct($quantity_input, $id_input){
-    $quantity = $quantity_input['quantity'];
-    $rcv_id = $id_input['id'];
-     if(empty($quantity)){
-         $quantity_error = "Quantity must not be empty!";
-         return $quantity_error;
-     }else{
-         $cart_insert =  "INSERT INTO selected_products (id, product_name, product_price, vendor_email, product_image, tax, product_quantity)
-         SELECT id, product_name, product_price, vendor_email, product_image, tax, '$quantity'
-         FROM oop_crud
-         WHERE id = $rcv_id";
-         $cart_insert_connection = $this->obj->insert_cart_table($cart_insert);
-     }
- }
-//  This method is for showing selected products from selected_products mysql table to UI
- public function show_selectedproducts(){
-        $show_cart_query = "SELECT * FROM selected_products";
-        $show_cart_query_connection = $this->obj->show_cart($show_cart_query);
-        return $show_cart_query_connection;
- }
-
-}
-
 ?>
+
 <!-- html with bootsrtap cdn -->
 <!DOCTYPE html>
 <html lang="en">
@@ -66,7 +36,7 @@ class cart{
         </thead>
         <?php
         // Calling the method show_selectedproducts where sql select query by cart object
-        $show_cart_products = $cart->show_selectedproducts();
+        $show_cart_products = $product->show_selectedproducts();
         if($show_cart_products){
           $serial_no = 0;
           // This is a while loop running for showing the product row by row in a html table
