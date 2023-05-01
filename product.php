@@ -1,4 +1,5 @@
 <?php
+namespace model;
 require 'vendor/autoload.php';
 
 class product{
@@ -6,7 +7,7 @@ class product{
     // This constractor is for creating an object for the class database where have all the connections(db connection, insert, show query connections)
     public function __construct(){
 
-       $this->obj = database::getInstance();
+       $this->obj = \controller\Database::getInstance();
     }
     public function addProduct($data, $img){
         // Taking values of input field by post and files(super global variable)
