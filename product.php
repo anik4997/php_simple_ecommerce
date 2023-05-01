@@ -67,5 +67,29 @@ class product{
         $select_query_connection = $this->obj->select($show_query);
         return $select_query_connection;
     }
+
+
+//  This method is for selecting products and copy to the new cart table(selected_products in mysql) from oop_crud table
+public function selectproduct($quantity_input, $id_input){
+    $quantity = $quantity_input['quantity'];
+    $rcv_id = $id_input['id'];
+     if(empty($quantity)){
+         $quantity_error = "Quantity must not be empty!";
+         return $quantity_error;
+     }else{
+         $cart_insert =  "INSERT INTO selected_products (id, product_name, product_price, vendor_email, product_image, tax, product_quantity)
+         SELECT id, product_name, product_price, vendor_email, product_image, tax, '$quantity'
+         FROM oop_crud
+         WHERE id = $rcv_id";
+         $cart_insert_connection = $this->obj->insert_cart_table($cart_insert);
+     }
+ }
+    
+//  This method is for showing selected products from selected_products mysql table to UI
+ public function show_selectedproducts(){
+        $show_cart_query = "SELECT * FROM selected_products";
+        $show_cart_query_connection = $this->obj->show_cart($show_cart_query);
+        return $show_cart_query_connection;
+ }
 }
 ?>
