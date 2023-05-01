@@ -1,8 +1,9 @@
 <?php
+namespace controller;
 require 'vendor/autoload.php';
 class Database {
     // Achieving singleton behavior for this class by singleton trait in 'singleton.php' file
-    use singleton;
+    use \singleton;
 
     public $db_host = HOST;
     public $db_username = USERNAME;
