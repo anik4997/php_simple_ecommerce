@@ -2,7 +2,7 @@
 namespace controller;
 require 'vendor/autoload.php';
 class Database {
-    // Achieving singleton behavior for this class by singleton trait in 'singleton.php' file
+    // Achieving singleton behavior for this class by singleton trait from'singleton.php' file
     use \singleton;
 
     public $db_host = HOST;
