@@ -1,5 +1,13 @@
 {
     "autoload": {
-        "files": ["config.php","database.php","product.php"]
+        "psr-4": {
+            "model\\": "model/",
+            "view\\": "view/",
+            "controller\\": "controller/"
+        },
+        "files": [
+            "config.php",
+            "singleton.php"
+        ]
     }
 }
