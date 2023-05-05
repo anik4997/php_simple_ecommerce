@@ -1,9 +1,10 @@
 <?php
 namespace view;
+use \model\product;
 require 'vendor/autoload.php';
 // Creating objects for product class and passing the super global variable $_POST, $_FILES as parameter to the method addProduct()
-$product = new \model\Product();
-// Passing superglobal variable POST and REQUEST to addProduct method(product.php) for getting the specific values
+$product = new product();
+// Passing superglobal variable POST and FILES to addProduct method(product.php) for getting the specific values for inserting products
 if (isset($_POST['submit'])){
   $add_product = $product->addProduct($_POST, $_FILES);
 }
@@ -130,9 +131,9 @@ if (isset($_POST['submit'])){
                       <h5 class="card-title d-inline"><?php $row['product_name'];?></h5>
                       <h5 class="float-right">$<?php echo $row['product_price'];?>+ tax <?php echo $row['tax'];?>%</h5>
                       <p class="card-text"><?php echo $row['product_details'];?></p>
-                      <form action="selected_product.php?id=<?php echo $row['id'];?>" method="post">
+                      <form action="view/selected_product.php?id=<?php echo $row['id'];?>" method="post">
                         <input type="number" class="mb-2" min="1" step="1" name="quantity" placeholder="quantity" required>
-                        <a href="selected_product.php?id=<?php echo $row['id'];?>"><button type="submit" name="select_items" class="btn btn-primary">Select Item</button></a>
+                        <a href="view/selected_product.php?id=<?php echo $row['id'];?>"><button type="submit" name="select_items" class="btn btn-primary">Select Item</button></a>
                    </div>
                   </div>
                 </div>
