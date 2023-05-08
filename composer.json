@@ -2,7 +2,7 @@
     "autoload": {
         "psr-4": {
             "model\\": "model/",
-            "view\\": "view/",
+            "view\\": ["view/", ""],
             "controller\\": "controller/"
         },
         "files": [
