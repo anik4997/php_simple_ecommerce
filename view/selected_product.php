@@ -1,6 +1,4 @@
 <?php
-namespace view;
-use \model\product;
 require 'vendor/autoload.php';
 // creating an object for product class
 $product = new product();
