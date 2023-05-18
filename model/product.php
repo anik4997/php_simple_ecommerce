@@ -1,6 +1,4 @@
 <?php
-namespace model;
-use \controller\Database;
 require 'vendor/autoload.php';
 
 class product{
