@@ -1,13 +1,10 @@
 {
     "autoload": {
-        "psr-4": {
-            "model\\": "model/",
-            "view\\": ["view/", ""],
-            "controller\\": "controller/"
-        },
+        "classmap": ["model","view","controller"],
         "files": [
             "config.php",
-            "singleton.php"
+            "singleton.php",
+            "send_mail.php"
         ]
     }
 }
