@@ -1,5 +1,4 @@
 <?php
-namespace controller;
 require 'vendor/autoload.php';
 class Database {
     // Achieving singleton behavior for this class by singleton trait from'singleton.php' file
