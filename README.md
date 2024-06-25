@@ -11,4 +11,3 @@ After clicking submit button your product will be uploaded to our database from 
 2.SELECTED ITEMS PAGE:
 After selecting an item it'll be shown in a page and that page you will be redirected and then you can see a bootstrap table that show 'No. of items', 'Product name', 'Product image','Quantity(which you have selected)','Unit Price','Tax amount','Total Price(according to quantity, product price and tax amount)','Vendor's Email'. If you want to select more items you can go back and select more items you want after selecting the products you will click on a button that shows "place order" if you click on it your order will be placed and your vendor will get notified through an email note that you can select products of different vendors and your every vendors will get notified and you will get a confirmation message.
 
-A video instructions about the assessment: https://drive.google.com/file/d/1-0E_3fJc0Uf1j-zRp2y2Fn3kaKWIk0I5/view?usp=share_link
